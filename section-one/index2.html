@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/react@15.5.4/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+    <title>Let's React</title>
+</head>
+<body>
+<div id="app1">React has not rendered yet</div>
+<div id="app2">React has not rendered yet</div>
+<div id="app3">React has not rendered yet</div>
+<script type="text/babel">
+    ReactDOM.render(
+        <p>I'm a paragraph!</p>,
+        document.getElementById("app1")
+    );
+    ReactDOM.render(
+        <a href="http://google.com">Visit google</a>,
+        document.getElementById("app2")
+    );
+        ReactDOM.render(
+        <ul>
+            <li>Render a paragraph</li>
+            <li>Render a link to google</li>
+            <li>Render a list</li>
+        </ul>,
+        document.getElementById("app3")
+    );
+</script>
+</body>
+</html>
