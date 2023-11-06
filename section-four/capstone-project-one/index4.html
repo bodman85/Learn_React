@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/react@15.5.4/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.css">
+    <title>FriendLy</title>
+</head>
+<body>
+<div id = "app">React has not rendered yet</div>
+<script type = "text/babel">
+
+    var FriendLy = function(props){
+        var friendlyStyle = {
+            display: 'inline-block',
+            margin:20,
+            height: 300,
+            width: 200,
+            padding: 0,
+            backgroundColor: "#FFF",
+            WebkitFilter: "drop-shadow(0px 0px 5px #555)",
+            filter: "drop-shadow(0px 0px 5px #555)"
+        }
+        var maleCards = props.people
+        .filter(function(person){return(person.gender=="male");})
+        .map(function(person){
+            return(
+            <div key={person.id} style = {friendlyStyle}>
+                <Avatar img={person.img}/>
+                <UserName name={person.name}/>
+                <GetConnected/>
+            </div>
+            );})
+
+        var femaleCards = props.people
+        .filter(function(person){return(person.gender==="female");})
+        .map(function(person){
+            return(
+            <div key={person.id} style = {friendlyStyle}>
+                <Avatar img={person.img}/>
+                <UserName name={person.name}/>
+                <GetConnected/>
+            </div>
+            );})
+
+        return(
+            <div>
+            <h1>Boys</h1>
+                {maleCards}
+             <hr/>
+             <h1>Girls</h1>
+                {femaleCards}
+            </div>
+        );
+    }
+
+    function Avatar(props) {
+        var avatarStyle = {
+            marginLeft: 27,
+            marginTop: 20,
+            width: 150,
+            height: 150,
+            borderRadius: "50%"
+        }
+        return(
+            <img src = {props.img} alt="profile pic" style={avatarStyle}/>
+        );
+    }
+
+    function UserName(props) {
+        var nameStyle = {
+            fontSize: 24,
+            textAlign: "center",
+            fontFamily: "Arial, Helvetica, sans-serif",
+            margin: 20
+        }
+        return(
+            <h1 style = {nameStyle}>{props.name}</h1>
+        );
+    }
+
+    function GetConnected() {
+        var getConnectedStyle = {
+            marginLeft: 15
+        }
+        return(
+            <div style={getConnectedStyle}>
+                <Like/>
+                <Share/>
+                <Add/>
+            </div>
+        );
+    }
+
+    var iconStyle = {
+        margin: 20
+    }
+
+    function Like() {
+        return(
+            <i className="fa fa-thumbs-up" aria-hidden="true" style = {iconStyle}></i>
+        );
+    }
+
+    function Share() {
+        return(
+            <i className="fa fa-share" aria-hidden="true" style = {iconStyle}></i>
+        );
+    }
+
+    function Add() {
+        return(
+            <i className="fa fa-users" aria-hidden="true" style = {iconStyle}></i>
+        );
+    }
+
+    var people = [
+        {id: 1, name:"Bogdan",     gender: "male",   img:"https://media.licdn.com/dms/image/C5603AQGgOVvx56sWfQ/profile-displayphoto-shrink_400_400/0/1607353648020?e=1704326400&v=beta&t=9xmfqItxZA8ME1XolphtGqha11H7sGulekK0-iCEvHU"},
+        {id: 2, name:"Iryna",      gender: "female", img:"https://media.licdn.com/dms/image/C4D03AQGlhPxzVT-EAQ/profile-displayphoto-shrink_800_800/0/1574778557264?e=1704326400&v=beta&t=KQ2VBZbpQcswWx5HT6fYkwPH2gWYBupbkvSueCR-ZWY"},
+        {id: 3, name:"Oleg",       gender: "male", img:"https://media.licdn.com/dms/image/D4E35AQGYcNc-nP6mLA/profile-framedphoto-shrink_800_800/0/1698674000339?e=1699639200&v=beta&t=D_kZtsN0efDXRbPR7c46jD5VA4ZKSptdwIK9lCvi5Ns"},
+        {id: 4, name:"Anna",       gender: "female", img:"https://media.licdn.com/dms/image/D4D03AQFp1p7i4IPVKg/profile-displayphoto-shrink_800_800/0/1694688824442?e=1704326400&v=beta&t=433BcDEVjdE97Q3O5LOiS7uBeGcz-HMnSbWO36qKFv4"},
+        {id: 5, name:"Lesya",      gender: "female", img:"https://media.licdn.com/dms/image/C4D03AQHBDTEmhRNmow/profile-displayphoto-shrink_800_800/0/1602575498164?e=1704326400&v=beta&t=R1vUIJRH9azriOIt9XYgBfLdvNg0iqKwR8ZZrGKt024"},
+        {id: 6, name:"Ievgen",     gender: "male",   img:"https://media.licdn.com/dms/image/C5103AQF1cXk5PO4XDg/profile-displayphoto-shrink_800_800/0/1516355001621?e=1704326400&v=beta&t=riEOZTFFwxBRQBe2LY-GxHlznhHKCbsuBD9_O1ifdpc"},
+        {id: 7, name:"Taras",      gender: "male",   img:"https://media.licdn.com/dms/image/D4E35AQFYKrWukMZr4Q/profile-framedphoto-shrink_800_800/0/1685706235899?e=1699639200&v=beta&t=9jWteoAiIp-XQB4wWSsinhTzoWZ49Y4TOINHEKabtqE"},
+        {id: 8, name:"Viktor",     gender: "male",   img:"https://media.licdn.com/dms/image/C5603AQHtLIcAf4m0vA/profile-displayphoto-shrink_800_800/0/1570802374074?e=1704326400&v=beta&t=wz51jhYF7ci68DV4R_ZDgmU_0AgYuofb1513XtYgsVE"},
+        {id: 9, name:"Valentyna",  gender: "female", img:"https://media.licdn.com/dms/image/C4E03AQHoNERxfSlcMg/profile-displayphoto-shrink_800_800/0/1638190683034?e=1704326400&v=beta&t=KpYcrsMi4lX-Xcimwsf4BmAYRaUjxERvNbt8hUMGbG0"},
+        {id: 10, name:"Yuliia",    gender: "female", img:"https://media.licdn.com/dms/image/C4D03AQGfkmfCDByr7Q/profile-displayphoto-shrink_800_800/0/1659703817771?e=1704326400&v=beta&t=yAijn6xEwhRapmZFkW443HLlWbnx4e5SfCblcTgNQSM"},
+        {id: 11, name:"Vladyslava",gender: "female", img:"https://media.licdn.com/dms/image/D4D03AQHgHs1kxWxG0A/profile-displayphoto-shrink_800_800/0/1677264524028?e=1704326400&v=beta&t=2kHjThWWRhH7Ok3jqOn-NAG-cwIgrObxISOl9GrkHpE"},
+        {id: 12, name:"Svetlana",  gender: "female", img:"https://media.licdn.com/dms/image/D4D03AQHIVBmUobJuyw/profile-displayphoto-shrink_800_800/0/1687521602949?e=1704326400&v=beta&t=tP1tnNJZU4308R2vQIrgb4RwgJbxImsHwn4YHOP3kLU"}
+    ]
+
+    ReactDOM.render(
+            <FriendLy people = {people}/>,
+        document.getElementById("app")
+    );
+</script>
+</body>
+</html>
