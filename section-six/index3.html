@@ -19,8 +19,7 @@
           <div>
             <h1>Female Siblings</h1>
             <div>{props.siblings
-            .filter(function(person)  {
-                return(person.female) })
+            .filter((person) => person.female)
             .map(function(person){
                 return(<div key={person.id}>{person.name}</div>)})}
             </div>
